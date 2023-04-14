@@ -1,5 +1,5 @@
 /**
- * Cookies - v1.1.0
+ * Cookies - v1.1.1
  * Copyright 2021 Abel Brencsan
  * Released under the MIT License
  */
@@ -18,10 +18,10 @@ var Cookies = (function(){
 		var expiration = '';
 		if (days) {
 			var date = new Date();
-			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-			expiration = '; expires=' + date.toGMTString();
+			date.setDate(date.getDate() + days);
+			expiration = '; expires=' + date.toUTCString();
 		}
-		document.cookie = name + '=' + value + expiration + '; path=/';
+		document.cookie = name + "=" + value + expiration + '; ' + 'sameSite=Lax; Secure';
 	}
 
 	/**
